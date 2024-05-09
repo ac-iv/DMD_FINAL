@@ -1,27 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/addons/p5.sound.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
   <meta charset="utf-8" />
+  <title>Interactive Typography</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f3f3f3;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    main {
+      max-width: 600px;
+      padding: 20px;
+      background-color: #fff;
+      border: 2px solid #ccc;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #ff6600;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.6;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #ff6600;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff8533;
+    }
+
+    button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    #purchase {
+      background: #ffefdb;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
   <main>
-    <h1>The Prophet: On Pain</h1>
-  </main>
-  <h3></h3>
-  <button id="next" onclick="changePage()">Next</button>
-  <footer>
-    <p>
-        Page 1
+    <h1>Project 4: Interactive Typography</h1>
+    <p>For this project, I decided to create a series of minigames alluding to each stanza from a passage of my favorite book, <em>The Prophet</em> by Kahlil Gibran.</p>
+    <p>Much of your pain is self-chosen.
+      It is the bitter potion by which the physician within you heals your sick self.
+      Therefore trust the physician, and drink his remedy in silence and tranquility:
+      For his hand, though heavy and hard, is guided by the tender hand of the Unseen,
+      And the cup he brings, though it burn your lips, has been fashioned of the clay which the Potter has moistened with His own sacred tears.
     </p>
-  </footer>
-  <script src="js/page1.js"></script>
-  <script>
-    function changePage() {
-      window.location.href = 'page2.html';
-    }
-  </script>
+    <p>
+      As you move forward through the minigames, you will unlock a line as you go along, knowledge being the ultimate prize. 
+    </p>
+    <button><a href="page1.html">Click here to get started</a></button>
+    <!-- Purchase Section -->
+    <section id="purchase">
+      <h2>Purchase "The Prophet"</h2>
+      <p>Explore the wisdom of Kahlil Gibran in this timeless classic. Available now for $12.99.</p>
+      <button><a href="purchase.html">Buy Now</a></button>
+    </section>
+  </main>
 </body>
 </html>

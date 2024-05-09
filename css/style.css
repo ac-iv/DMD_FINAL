@@ -2,6 +2,7 @@ html, body {
   margin: 3%;
   padding: 0;
   text-align: center;
+  font-family:Arial, Helvetica, sans-serif ;
 }
 canvas {
   display: block;
@@ -17,4 +18,68 @@ footer{
   bottom: 0;
   right: 0;
   padding-right: 2%;
+}
+h1{
+  color: rgb(255, 0, 0);
+}
+font-family: 'Arial', sans-serif;
+background-color: #f3f3f3;
+color: #333;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+}
+
+main {
+max-width: 600px;
+padding: 20px;
+background-color: #fff;
+border: 2px solid #ccc;
+border-radius: 15px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
+
+h1, h2 {
+color: #ff6600;
+font-size: 28px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+
+p {
+color: #666;
+line-height: 1.6;
+text-align: justify;
+margin-bottom: 20px;
+}
+
+button {
+background-color: #ff6600;
+border: none;
+color: white;
+padding: 12px 24px;
+text-align: center;
+font-size: 18px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+button:hover {
+background-color: #ff8533;
+}
+
+button a {
+color: white;
+text-decoration: none;
+}
+
+#purchase {
+background: #ffefdb;
+padding: 20px;
+border-radius: 8px;
+margin-top: 30px;
 }
