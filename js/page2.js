@@ -3,16 +3,16 @@ let backgroundImage;
 let cauldronImage;
 let tableImage;
 let ingredients = ["Fear", "Doubt", "Regret", "Resentment"];
-let promptIndex = 0; // Index for the current prompt
-let shuffledPrompts = []; // Shuffled array of ingredient prompts
-let promptX = 100; // X position for the first ingredient prompt
-let promptY = 100; // Y position for the ingredient prompts
-let promptSpacing = 150; // Spacing between ingredient prompts
-let catalogX = 0; // X position for the word catalog
-let catalogY; // Y position for the word catalog
-let catalogWidth = 800; // Width for the word catalog
-let catalogHeight = 100; // Height for the word catalog
-let catalogOpacity = 180; // Opacity for the word catalog background (out of 255)
+let promptIndex = 0;
+let shuffledPrompts = []; 
+let promptX = 100; 
+let promptY = 100;
+let promptSpacing = 150; 
+let catalogX = 0; 
+let catalogY; 
+let catalogWidth = 800; 
+let catalogHeight = 100; 
+let catalogOpacity = 180; 
 let cauldronX = 300;
 let cauldronY = 280;
 let cauldronWidth = 200;
@@ -25,45 +25,38 @@ let fadeAmount = 5;
 let poemOpacity = 0;
 
 function preload() {
-  // Load assets needed for the page
-  backgroundImage = loadImage('img/Lair.png'); // Assuming this is the layered background image
+  backgroundImage = loadImage('img/Lair.png'); 
   tableImage = loadImage('img/wooden_table.png');
   cauldronImage = loadImage('img/Cauldron.png');
 }
 
 function setup() {
-  createCanvas(800, 600); // Set canvas size as needed
+  createCanvas(800, 600); 
   textAlign(CENTER, CENTER);
   textSize(20);
-  catalogY = height - catalogHeight / 2; // Center the word catalog vertically
-  shuffledPrompts = shuffle(ingredients.slice()); // Shuffle a copy of the ingredients array
+  catalogY = height - catalogHeight / 2;
+  shuffledPrompts = shuffle(ingredients.slice()); 
 }
 
 function draw() {
-  background(255, poemOpacity); // Clear canvas with poem opacity
+  background(255, poemOpacity); 
 
-  // Draw background image
   image(backgroundImage, 0, 0, width, height);
 
-  // Draw table
-  image(tableImage, 0, 0, width, height); // Assuming the table image covers the entire canvas
+  image(tableImage, 0, 0, width, height); 
 
-  // Draw cauldron
-  image(cauldronImage, cauldronX, cauldronY, cauldronWidth, cauldronHeight); // Cauldron is centered
+  image(cauldronImage, cauldronX, cauldronY, cauldronWidth, cauldronHeight); 
 
-  // Draw ingredient prompts
   drawIngredientPrompts();
 
-  // Draw word catalog
   drawWordCatalog();
 
-  // If all ingredients have been added, display poem
   if (completedIngredients === ingredients.length) {
-    fadeOut = true; // Trigger fade out effect
+    fadeOut = true; 
     drawPoem();
   }
 
-  // If an ingredient is being dragged, draw it at mouse position
+  
   if (draggedIngredient) {
     fill(255, 30); // White with 30% opacity
     rect(mouseX - 50, mouseY - 15, 100, 30);

@@ -3,7 +3,7 @@ let apples = [];
 let basket;
 let progressBar;
 let allPicked = false;
-let dragging = null; // Track the apple being dragged
+let dragging = null; 
 
 function preload() {
   appleImg = loadImage('img/Apple.png');
@@ -17,15 +17,14 @@ function setup() {
   createCanvas(800, 600);
   let treeScale = (height - groundImg.height) / treeImg.height;
   let treeX = width / 2 - treeImg.width * treeScale / 2;
-  let treeY = height - groundImg.height - treeImg.height * treeScale + 50; // Lower the tree by adjusting this value
-  let top40Height = treeY + treeImg.height * treeScale * 0.5; // Calculate the top 40% height of the tree
-
+  let treeY = height - groundImg.height - treeImg.height * treeScale + 50; 
+  let top40Height = treeY + treeImg.height * treeScale * 0.5;
   for (let i = 0; i < 8; i++) {
     let appleX, appleY;
     let overlap = true;
     while (overlap) {
       appleX = random(treeX, treeX + treeImg.width * treeScale);
-      appleY = random(treeY, top40Height); // Limit apple Y position to top 40% of the tree
+      appleY = random(treeY, top40Height);
       overlap = false;
       for (let apple of apples) {
         let d = dist(appleX, appleY, apple.x, apple.y);

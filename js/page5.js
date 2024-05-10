@@ -10,7 +10,7 @@ function setup() {
   textSize(32);
   textAlign(CENTER, CENTER);
 
-  // Create the win message element but hide it initially
+  
   winMessage = createElement('div', "<p>And the cup he brings, though it burn your lips, has been fashioned of the clay which the Potter has moistened with His own sacred tears.</p><button onclick='winMessage.hide()'>Close</button>");
   winMessage.style('background', 'white');
   winMessage.style('padding', '20px');
@@ -89,8 +89,8 @@ function checkGuess() {
 }
 
 function centerPopup() {
-  let popupWidth = 500; // Assuming the width of the popup
-  let popupHeight = 150; // Assuming the height of the popup
+  let popupWidth = 500; 
+  let popupHeight = 150; 
   let xPosition = (width - popupWidth) / 2;
   let yPosition = (height - popupHeight) / 2;
   winMessage.position(xPosition, yPosition);
