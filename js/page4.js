@@ -6,7 +6,7 @@ let mazePath = [
   [29.55, 92.43], [29.55, 203.1], [401.17, 203.1], [401.17, 287.36]
 ];
 let scaleFactor, offsetX, offsetY;
-let gameState = 'start'; // Possible states: 'start', 'game', 'gameOver', 'win'
+let gameState = 'start'; 
 let startButtonX, startButtonY;
 let finishLineX, finishLineY, finishLineRadius = 10;
 
@@ -20,8 +20,8 @@ function setup() {
   offsetY = (height - scaleFactor * mazeHeight) / 2;
   startButtonX = offsetX + 10 * scaleFactor;
   startButtonY = offsetY + 270 * scaleFactor;
-  finishLineX = width / 1.83; // Center top
-  finishLineY = offsetY + 10; // Slightly inside the top boundary
+  finishLineX = width / 1.83; 
+  finishLineY = offsetY + 10; 
 }
 
 function draw() {
@@ -54,8 +54,8 @@ function drawMaze() {
     vertex(offsetX + point[0] * scaleFactor, offsetY + point[1] * scaleFactor);
   });
   endShape(CLOSE);
-  fill(0, 255, 0); // Green for finish line
-  ellipse(finishLineX, finishLineY, finishLineRadius * 2, finishLineRadius * 2); // Draw finish line
+  fill(0, 255, 0); 
+  ellipse(finishLineX, finishLineY, finishLineRadius * 2, finishLineRadius * 2); 
   checkCursorInBounds();
 }
 
@@ -64,7 +64,7 @@ function displayGameOverScreen() {
   textSize(30);
   textAlign(CENTER, CENTER);
   text("Game Over! Click to restart", width / 2, height / 2 - 20);
-  ellipse(startButtonX, startButtonY, 20, 20); // Restart button
+  ellipse(startButtonX, startButtonY, 20, 20); 
 }
 
 function displayWinScreen() {
@@ -78,7 +78,7 @@ function checkCursorInBounds() {
   let color = get(mouseX, mouseY);
   if (!(color[0] === 46 && color[1] === 49 && color[2] === 146)) {
     gameState = 'gameOver';
-  } else if (mouseY < height * 0.12) { // Check if cursor is above top 10% of the screen
+  } else if (mouseY < height * 0.12) { 
     gameState = 'win';
   } else if (dist(mouseX, mouseY, finishLineX, finishLineY) <= finishLineRadius) {
     gameState = 'gameOver';

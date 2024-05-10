@@ -1,4 +1,3 @@
-// Define variables for background and cauldron
 let backgroundImage;
 let cauldronImage;
 let tableImage;
@@ -58,127 +57,116 @@ function draw() {
 
   
   if (draggedIngredient) {
-    fill(255, 30); // White with 30% opacity
+    fill(255, 30); 
     rect(mouseX - 50, mouseY - 15, 100, 30);
-    fill(255, 0, 0); // Red text color
+    fill(255, 0, 0); 
     text(draggedIngredient, mouseX, mouseY);
   }
 
-  // If showPopup is true, display the popup
   if (showPopup) {
     drawPopup();
   }
 
-  // Fade out effect
   if (fadeOut) {
     fadeOutElements();
   }
 }
 
 function fadeOutElements() {
-  // Fade out elements gradually
   if (catalogOpacity > 90) {
     catalogOpacity -= fadeAmount;
   }
 }
 
 function drawIngredientPrompts() {
-  fill(255); // White text color for visibility
-  
+  fill(255); 
   let prompt = shuffledPrompts[promptIndex];
   if (prompt !== undefined) {
-    textStyle(BOLD); // Set text style to bold
+    textStyle(BOLD); 
     text("Add " + prompt + ":", width / 2, promptY);
-    textStyle(NORMAL); // Reset text style
+    textStyle(NORMAL); 
   } else {
-    fill(255, 0); // Set text opacity to 0%
+    fill(255, 0); 
   }
 }
 
 function drawWordCatalog() {
-  fill(255, catalogOpacity); // White with catalogOpacity opacity
+  fill(255, catalogOpacity); 
   rect(catalogX, catalogY - catalogHeight / 2, catalogWidth, catalogHeight);
-  fill(255, 0, 0); // Red text color
+  fill(255, 0, 0);
   for (let i = 0; i < ingredients.length; i++) {
-    let x = catalogX + catalogWidth / ingredients.length * (i + 0.5); // Adjusted to remove left margin
+    let x = catalogX + catalogWidth / ingredients.length * (i + 0.5); 
     let y = catalogY;
     text(ingredients[i], x, y);
   }
 }
 
 function drawPoem() {
-  // Display the poem when all ingredients have been added to the cauldron
+  
   textSize(24);
   fill(255);
   text("It is the bitter potion by which the physician within you heals your sick self.", width / 2, height / 2);
-  poemOpacity = 90; // Set opacity for poem
+  poemOpacity = 90; 
 }
 
 function drawPopup() {
-  fill(255, 200); // Semi-transparent white background
-  rect(width / 4, height / 3, width / 2, height / 3, 20); // Popup box
-  fill(0); // Black text color
+  fill(255, 200); 
+  rect(width / 4, height / 3, width / 2, height / 3, 20); 
+  fill(0); 
   textSize(24);
-  text("Wrong ingredient, starting over", width / 2, height / 2 - 20); // Popup text
-  fill(255); // White text color
-  rect(width / 2 - 50, height / 2 + 20, 100, 40, 10); // OK button background
-  fill(0); // Black text color
-  text("OK", width / 2, height / 2 + 40); // OK button text
+  text("Wrong ingredient, starting over", width / 2, height / 2 - 20); 
+  fill(255); 
+  rect(width / 2 - 50, height / 2 + 20, 100, 40, 10); 
+  fill(0); 
+  text("OK", width / 2, height / 2 + 40); 
 }
 
 function mousePressed() {
-  // If an ingredient is being dragged, return
   if (draggedIngredient) return;
 
-  // Check if the mouse is pressed on the word catalog
   for (let i = 0; i < ingredients.length; i++) {
     let x = catalogX + catalogWidth / ingredients.length * i;
     let y = catalogY - catalogHeight / 2;
     let w = catalogWidth / ingredients.length;
     let h = catalogHeight;
     if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-      draggedIngredient = ingredients[i]; // Start dragging this ingredient
+      draggedIngredient = ingredients[i]; 
       break;
     }
   }
 
-  // If showPopup is true, check if the mouse is pressed on the OK button
+  
   if (showPopup && mouseX > width / 2 - 50 && mouseX < width / 2 + 50 && mouseY > height / 2 + 20 && mouseY < height / 2 + 60) {
-    promptIndex = 0; // Reset prompt index
-    completedIngredients = 0; // Reset completed ingredients count
+    promptIndex = 0;
+    completedIngredients = 0; 
     shuffledPrompts = shuffle(ingredients.slice()); // Reshuffle prompts
-    showPopup = false; // Close the popup
+    showPopup = false; 
   }
 }
 
 function mouseReleased() {
-  // If an ingredient is not being dragged, return
   if (!draggedIngredient) return;
 
-  // Check if the mouse is released over the cauldron
   if (mouseX > cauldronX && mouseX < cauldronX + cauldronWidth && mouseY > cauldronY && mouseY < cauldronY + cauldronHeight) {
-    // Check if the correct ingredient is added
     if (draggedIngredient === shuffledPrompts[promptIndex]) {
       completedIngredients++; // Increment completed ingredients count
       promptIndex++; // Move to the next prompt
       if (promptIndex < ingredients.length) {
-        // If there are more prompts, display next prompt
         displayPrompt();
       }
     } else {
-      // If the wrong ingredient is added, show the popup
       showPopup = true;
     }
   }
 
-  draggedIngredient = null; // Reset dragged ingredient
+  draggedIngredient = null; 
 }
 
 function displayPrompt() {
-  fill(255); // White text color
+  fill(255); 
   let prompt = shuffledPrompts[promptIndex];
   if (prompt !== undefined) {
-    textStyle(BOLD); // Set text style to bold
+    textStyle(BOLD); 
     text("Add " + prompt + ":", width / 2, promptY);
     textStyle(NORMAL); // Reset text style
     back
